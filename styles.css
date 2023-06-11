@@ -23,12 +23,12 @@ body {
   }
   
   .countdown-item {
-    font-size: 48px;
+    font-size: 40px;
     margin: 0 10px;
     background-color: #fff;
     color: #333;
-    border-radius: 50%;
-    width: 80px;
+    border-radius: 2em;
+    width: 100px;
     height: 80px;
     display: flex;
     justify-content: center;
