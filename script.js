@@ -1,11 +1,12 @@
 let añoNacimiento = 2004;
 let añoActual = new Date().getFullYear()
 const fechaNacimiento = new Date("2004-10-15")
+const inicioDeAño = new Date(añoActual + '-01-01');
+const now = new Date()
 
 const birthday = new Date(añoActual + '-10-15');
 let edad = document.getElementById("edad")
 function updateCountdown() {
-  const now = new Date();
   const diff = birthday - now;
 
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -33,7 +34,6 @@ function getTimeOfLife() {
   let minutesOfLife = document.getElementById("minutesOfLife");
   let hoursOfLife = document.getElementById("hoursOfLife");
   let secondsOfLife = document.getElementById("secondsOfLife");
-  let now = new Date()
   let life = now - fechaNacimiento ;
 
   let days = Math.floor(life / (1000 * 60 * 60 * 24));
@@ -49,3 +49,25 @@ function getTimeOfLife() {
 }
 
 setInterval(getTimeOfLife, 1000);
+
+
+function getTimePassedOfYear() {
+  let daysOfYear = document.getElementById("daysOfYear");
+  let minutesOfYear = document.getElementById("minutesOfYear");
+  let hoursOfYear = document.getElementById("hoursOfYear");
+  let secondsOfYear = document.getElementById("secondsOfYear");
+
+  let tiempoTranscurrido = now - inicioDeAño;
+  let days = Math.floor(tiempoTranscurrido / (1000 * 60 * 60 * 24));
+  let hours = Math.floor((tiempoTranscurrido % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = Math.floor((tiempoTranscurrido % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((tiempoTranscurrido % (1000 * 60)) / 1000);
+
+  daysOfYear.textContent = days.toString().padStart(2, '0');
+   hoursOfYear.textContent = hours.toString().padStart(2, '0');;
+   minutesOfYear.textContent = minutes.toString().padStart(2, '0');
+   secondsOfYear.textContent = seconds.toString().padStart(2, '0');
+}
+
+
+setInterval(getTimePassedOfYear, 1000);
